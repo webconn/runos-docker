@@ -35,8 +35,10 @@ RUN git clone https://github.com/openvswitch/ovs && \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN mkdir /userdata
+
 COPY bashrc.sh /etc/bashrc.sh
+COPY entrypoint.sh /sbin/entrypoint.sh
+COPY path.sh /etc/profile.d
 
-RUN mkdir runos/build
-
-ENTRYPOINT ["/bin/bash", "--rcfile", "/etc/bashrc.sh"]
+ENTRYPOINT ["/sbin/entrypoint.sh"]
