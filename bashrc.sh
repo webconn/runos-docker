@@ -10,6 +10,11 @@ if [ -d runos ]; then
         mkdir -p runos/build && cd runos/build
         source ../debug_run_env.sh
         cd ../../
+elif [ -f ./debug_run_env.sh ]; then
+        echo '-> Found myself in runos directory, applying debug envs...'
+        mkdir -p build && cd build
+        source ../debug_run_env.sh
+        cd ../
 else
         echo '-> WARNING: No runos directory found here, you need to run "source ../debug_run_env.sh" by yourself'
 fi
