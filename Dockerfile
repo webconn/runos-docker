@@ -9,7 +9,7 @@ RUN apt-get update && \
     libboost-thread-dev libboost-coroutine-dev libboost-context-dev \
     libgoogle-perftools-dev curl wget iproute2 mininet bash-completion \
     iputils-ping net-tools \
-    nano vim iperf netcat sudo tmux 
+    nano vim iperf iperf3 tcpdump netcat sudo tmux
 
 # install nodejs 8.x
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && apt-get -y install nodejs && \
@@ -22,10 +22,6 @@ RUN wget https://github.com/libevent/libevent/releases/download/release-2.1.5-be
     cd libevent-2.1.5-beta && \
     ./configure && make && make install && ldconfig && \
     cd .. && rm -rf libevent-2.1.5-beta libevent-2.1.5-beta.tar.gz
-
-RUN git clone https://github.com/ARCCN/runos && \
-    cd runos && \
-    third_party/bootstrap.sh && cd ..
 
 # install openvswitch
 RUN git clone https://github.com/openvswitch/ovs && \
